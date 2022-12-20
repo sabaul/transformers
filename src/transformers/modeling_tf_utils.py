@@ -1291,6 +1291,7 @@ class TFPreTrainedModel(tf.keras.Model, TFModelUtilsMixin, TFGenerationMixin, Pu
         collate_fn_args: Optional[Dict[str, Any]] = None,
         drop_remainder: Optional[bool] = None,
         prefetch: bool = True,
+        num_workers: int = 0,
     ):
         """
         Wraps a HuggingFace [`~datasets.Dataset`] as a `tf.data.Dataset` with collation and batching. This method is
@@ -1377,6 +1378,7 @@ class TFPreTrainedModel(tf.keras.Model, TFModelUtilsMixin, TFGenerationMixin, Pu
             collate_fn=collate_fn,
             collate_fn_args=collate_fn_args,
             prefetch=prefetch,
+            num_workers=num_workers,
         )
         return tf_dataset
 
